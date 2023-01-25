@@ -112,6 +112,9 @@ class UsersTest extends TestCase
         $cntRoles = $roles->count();
 
         // retrieve user's available roles and count them
+        $foo = $users->retrieveRealmRoles('master', $user->getId());
+        static::assertGreaterThanOrEqual(1, $foo->count());
+
         $availableRoles = $users->retrieveAvailableRealmRoles('master', $user->getId());
         $cntAvailableRoles = $availableRoles->count();
         static::assertGreaterThanOrEqual(1, $cntAvailableRoles);
